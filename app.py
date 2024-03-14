@@ -147,7 +147,7 @@ def confirm(token):
                 cursor.execute('insert into users(username,password,email) values(%s,%s,%s)',(data['username'], data['password'], data['email']))
                 mydb.commit()
                 cursor.close()
-                flash('Details registered!')
+                flash('Details registered! You can Login now')
                 return redirect(url_for('login'))
         finally:
             if mydb.is_connected():
