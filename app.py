@@ -16,8 +16,14 @@ import re  # Import regular expression module for pattern matching
 app = Flask(__name__)
 app.secret_key = b'filesystem'
 app.config['SESSION_TYPE'] = 'filesystem'
+db=os.environ['RDS_DB_NAME']
+user=os.environ['RDS_USERNAME']
+password=os.environ['RDS_PASSWORD']
+host=os.environ['RDS_HOSTNAME']
+port=os.environ['RDS_PORT']
 
-conn = mysql.connector.pooling.MySQLConnectionPool(host='localhost', user='root', password="Deepureddy@837", db='skin', pool_name='DED', pool_size=3, pool_reset_session=True)
+conn=mysql.connector.pooling.MySQLConnectionPool(host=host,user=user,password=password,db=db,port=port,pool_name='DED',pool_size=3,pool_reset_session=True)
+#conn = mysql.connector.pooling.MySQLConnectionPool(host='localhost', user='root', password="Deepureddy@837", db='skin', pool_name='DED', pool_size=3, pool_reset_session=True)
 
 try:
     mydb = conn.get_connection()
